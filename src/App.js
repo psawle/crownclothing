@@ -1,6 +1,8 @@
 
 import { PublicRoutes } from "./routes/publicroutes/PublicRoutes";
 
+import { Navigation } from "./components";
+
 
 const App = () => {
   const categories = [
@@ -32,8 +34,10 @@ const App = () => {
   ];
 
   return (
-    // <Directory categories={categories}/>
+    <>
+    <Navigation/>
     <PublicRoutes categories={categories} />
+    </>
   );
 };
 
