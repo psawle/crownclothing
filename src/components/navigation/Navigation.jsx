@@ -22,7 +22,7 @@ export const Navigation = () => {
             Contact
           </li>
           <li className="nav-items" onClick={() => navigate("/signup")}>SignUp</li>
-          <li className="nav-items">Cart logo</li>
+          <li className="nav-items" onClick={() => navigate("/login")}>Login</li>
         </ul>
       </nav>
     </>

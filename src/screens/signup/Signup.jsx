@@ -3,10 +3,10 @@ import { useState } from 'react';
 import FormInput from '../../components/form-input/FormInput';
 import Button from '../../components/button/Button';
 
-// import {
-//   createAuthUserWithEmailAndPassword,
-//   createUserDocumentFromAuth,
-// } from '../../utils/firebase/Firebase';
+import {
+  createAuthUserWithEmailAndPassword,
+  createUserDocumentFromAuth,
+} from '../../utils/firebase/Firebase';
 
 import './signup.style.scss';
 
@@ -25,30 +25,31 @@ export const SignUpForm = () => {
     setFormFields(defaultFormFields);
   };
 
-//   const handleSubmit = async (event) => {
-//     event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log("values",formFields)
+    if (password !== confirmPassword) {
+      alert('passwords do not match');
+      return;
+    }
 
-//     if (password !== confirmPassword) {
-//       alert('passwords do not match');
-//       return;
-//     }
-
-//     try {
-//       const { user } = await createAuthUserWithEmailAndPassword(
-//         email,
-//         password
-//       );
-
-//       await createUserDocumentFromAuth(user, { displayName });
-//       resetFormFields();
-//     } catch (error) {
-//       if (error.code === 'auth/email-already-in-use') {
-//         alert('Cannot create user, email already in use');
-//       } else {
-//         console.log('user creation encountered an error', error);
-//       }
-//     }
-//   };
+    try {
+      console.log("tryyy")
+      const  user  = await createAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+      console.log("userrrrrrr",user)
+      await createUserDocumentFromAuth(user, { displayName });
+      resetFormFields();
+    } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        alert('Cannot create user, email already in use');
+      } else {
+        console.log('user creation encountered an error', error);
+      }
+    }
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -57,10 +58,11 @@ export const SignUpForm = () => {
   };
 
   return (
+    <div className='form-container'>
     <div className='sign-up-container'>
       <h2>Don't have an account?</h2>
       <span>Sign up with your email and password</span>
-      <form >
+      <form onSubmit={handleSubmit} >
         <FormInput
           label='Display Name'
           type='text'
@@ -98,6 +100,7 @@ export const SignUpForm = () => {
         />
         <Button type='submit'>Sign Up</Button>
       </form>
+    </div>
     </div>
   );
 };

@@ -1,0 +1,87 @@
+.login-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.sign-in-container {
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+  
+    h2 {
+      margin: 10px 0;
+    }
+  
+    .buttons-container {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  ///////////////////////////////////////////////////////////////////////////
+  
+// import React, { useRef } from 'react';
+// import Child1 from './Child1';
+// import Child2 from './Child2';
+
+// const Parent = () => {
+//     const child2Ref = useRef();
+
+//     const increment = () => {
+//         if (child2Ref.current) {
+//             child2Ref.current.increment();
+//         }
+//     };
+
+//     const decrement = () => {
+//         if (child2Ref.current) {
+//             child2Ref.current.decrement();
+//         }
+//     };
+
+//     return (
+//         <div>
+//             <h1>Parent Component</h1>
+//             <Child1 increment={increment} decrement={decrement} />
+//             <Child2 ref={child2Ref} />
+//         </div>
+//     );
+// };
+
+// export default Parent;
+
+
+// import React from 'react';
+
+// const Child1 = ({ increment, decrement }) => {
+//     return (
+//         <div>
+//             <h2>Child 1 Component</h2>
+//             <button onClick={increment}>Increment</button>
+//             <button onClick={decrement}>Decrement</button>
+//         </div>
+//     );
+// };
+
+// export default Child1;
+
+// import React, { useState, forwardRef, useImperativeHandle } from 'react';
+
+// const Child2 = forwardRef((props, ref) => {
+//     const [counter, setCounter] = useState(0);
+
+//     useImperativeHandle(ref, () => ({
+//         increment: () => setCounter((prev) => prev + 1),
+//         decrement: () => setCounter((prev) => prev - 1),
+//     }));
+
+//     return (
+//         <div>
+//             <h2>Child 2 Component</h2>
+//             <p>Counter Value: {counter}</p>
+//         </div>
+//     );
+// });
+
+// export default Child2;
