@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import FormInput from '../../components/form-input/FormInput';
 import Button from '../../components/button/Button';
+import { UserContext } from '../../context/Context';
 
 import {
   signInWithGooglePopup,
@@ -19,6 +20,7 @@ const defaultFormFields = {
 export const Login = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
+  const {setCurrentUser} = useContext(UserContext)
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -37,7 +39,8 @@ export const Login = () => {
         email,
         password
       );
-      console.log(response);
+      setCurrentUser(response)
+      console.log("rrrrr",response);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
@@ -55,7 +58,7 @@ export const Login = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
+    console.log("nnnn",event.target)
     setFormFields({ ...formFields, [name]: value });
   };
 
@@ -64,7 +67,7 @@ export const Login = () => {
     <div className='sign-up-container'>
       <h2>Already have an account?</h2>
       <span>Sign in with your email and password</span>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         <FormInput
           label='Email'
           type='email'

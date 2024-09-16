@@ -1,6 +1,4 @@
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -86,16 +84,17 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
-
   const logedinuser = await signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     const user = userCredential.user;
+    return user;
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+    return errorCode;
   });
-  console.log("logged in User",logedinuser)
+  return logedinuser;
 };
 
 export const signOutUser = async () => await signOut(auth);
