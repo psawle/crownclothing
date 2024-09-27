@@ -1,5 +1,7 @@
 
-import { Directory } from "./components/directory/Directory";
+import { PublicRoutes } from "./routes/publicroutes/PublicRoutes";
+
+import { Navigation } from "./components";
 
 
 const App = () => {
@@ -32,7 +34,10 @@ const App = () => {
   ];
 
   return (
-    <Directory categories={categories}/>
+    <>
+    <Navigation/>
+    <PublicRoutes categories={categories} />
+    </>
   );
 };
 
