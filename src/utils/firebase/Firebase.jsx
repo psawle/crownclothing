@@ -22,7 +22,7 @@ const firebaseConfig = {
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
-
+console.log("...",firebaseApp)
 const googleProvider = new GoogleAuthProvider();
 
 googleProvider.setCustomParameters({
@@ -92,6 +92,7 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+    console.log("error message inside firebase",errorMessage)
     return errorCode;
   });
   return logedinuser;
