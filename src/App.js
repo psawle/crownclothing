@@ -2,6 +2,9 @@
 import { PublicRoutes } from "./routes/publicroutes/PublicRoutes";
 
 import { Navigation } from "./components";
+import { ToastContainer } from 'react-toastify';
+
+
 
 
 const App = () => {
@@ -36,6 +39,7 @@ const App = () => {
   return (
     <>
     <Navigation/>
+    <ToastContainer />
     <PublicRoutes categories={categories} />
     </>
   );

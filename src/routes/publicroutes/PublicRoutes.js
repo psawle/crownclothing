@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import { Directory } from "../../components/directory/Directory"
-import {Shop,Contact, SignUpForm, Login, Signin} from "../../screens"
+import {Shop,Contact, SignUpForm, Login, Signin, Checkout} from "../../screens"
 
 export const PublicRoutes = (categories) => {
     const categories1 = categories
@@ -12,6 +12,7 @@ export const PublicRoutes = (categories) => {
             <Route path="/signup" element={<SignUpForm />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="signin" element={<Signin/>}></Route>
+            <Route path="/checkout" element={<Checkout/>} ></Route>
         </Routes>
     )
 }

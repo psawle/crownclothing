@@ -1,4 +1,7 @@
 import { useContext, useState } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 import FormInput from '../../components/form-input/FormInput';
 import Button from '../../components/button/Button';
@@ -11,6 +14,7 @@ import {
 } from '../../utils/firebase/Firebase';
 
 import './login.styles.scss';
+import { useNavigate } from 'react-router-dom';
 
 const defaultFormFields = {
   email: '',
@@ -21,6 +25,7 @@ export const Login = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   const {setCurrentUser} = useContext(UserContext)
+  const navigate = useNavigate()
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -40,17 +45,27 @@ export const Login = () => {
         password
       );
       setCurrentUser(response)
-      console.log("rrrrr",response);
       resetFormFields();
+      navigate('/shop')
+      toast.success('Login successful!', {
+        position: "top-right",
+      });
     } catch (error) {
       switch (error.code) {
         case 'auth/wrong-password':
-          alert('incorrect password for email');
+          toast.error('Incorrect password for email', {
+            position: "top-right",
+          });
           break;
         case 'auth/user-not-found':
-          alert('no user associated with this email');
+          toast.error('No user associated with this email', {
+            position: "top-right",
+          });
           break;
         default:
+          toast.error('An unexpected error occurred', {
+            position: "top-right",
+          });
           console.log(error);
       }
     }
