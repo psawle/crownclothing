@@ -1,21 +1,20 @@
+import { Route, Routes } from "react-router-dom";
 import { useContext } from "react";
 
 import { ProductContext } from "../../context/Product";
-// import { ProductCard } from "../../components/productcard/ProductCard";
+import { ProductList } from "../product-list";
+import { CategoriesItem } from "../categories-item";
 
 import "./shop.style.scss"
-import { CategoryPreview } from "../../components/category-preview/CategoryPreview";
 
 export const Shop = () => {
-
-  const {products} = useContext(ProductContext)
-
+  const {products} = useContext(ProductContext);
+  console.log("produst inside shop oage",products)
   return (
-    <>
-      {Object.keys(products).map((title) => {
-        const product = products[title]
-        return <CategoryPreview key={title} title={title} products={product}/>
-      })}
-    </>
-  );
+    <Routes>
+    <Route index element={<ProductList key={products.title}  products={products}/>}></Route>
+    <Route path=":category" element={<CategoriesItem key={products.title}  products={products}/>}></Route>
+  </Routes>
+  )
+  
 };
