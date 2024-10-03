@@ -21,7 +21,6 @@ export const ProductsProvider = ({ children }) => {
     }, []);
     
     const value = { products };
-    console.log("products value in product contect",products)
   return (
     <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
   );

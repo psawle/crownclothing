@@ -2,7 +2,7 @@ import { Category } from "../category-item/Category";
 import "./directory.style.scss";
 
 export const Directory = ({categories}) => {
-  console.log("categ",categories)
+
   return (
     <>
     <div className="categories-container">

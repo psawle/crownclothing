@@ -27,19 +27,19 @@ export const SignUpForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("values",formFields)
+   
     if (password !== confirmPassword) {
       alert('passwords do not match');
       return;
     }
 
     try {
-      console.log("tryyy")
+    
       const  user  = await createAuthUserWithEmailAndPassword(
         email,
         password
       );
-      console.log("userrrrrrr",user)
+     
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     } catch (error) {
