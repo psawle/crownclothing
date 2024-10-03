@@ -73,7 +73,7 @@ export const Login = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log("nnnn",event.target)
+   
     setFormFields({ ...formFields, [name]: value });
   };
 

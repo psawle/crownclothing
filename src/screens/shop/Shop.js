@@ -9,7 +9,7 @@ import "./shop.style.scss"
 
 export const Shop = () => {
   const {products} = useContext(ProductContext);
-  console.log("produst inside shop oage",products)
+
   return (
     <Routes>
     <Route index element={<ProductList key={products.title}  products={products}/>}></Route>

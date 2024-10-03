@@ -10,7 +10,7 @@ export const CategoriesItem = () => {
     const {category} = useParams()
     const {products} = useContext(ProductContext)
     const [categoryList,setCateoryList] = useState([])
-    console.log("cccccccat",category,"pppppprodt",products)
+    
     useEffect(() => {
       setCateoryList(products[category])
     },[category,products])
