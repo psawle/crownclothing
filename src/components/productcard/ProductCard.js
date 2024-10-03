@@ -4,12 +4,11 @@ import { CartContext } from "../../context/CartContext.js"
 import "./productcard.scss"
 import { useContext } from "react"
 
-export const ProductCard =  ({products}) => {
-
-    const {id,name,imageUrl,price} = products
+export const ProductCard =  ({product}) => {
+    const {id,name,imageUrl,price} = product
     const {addItemToCart} = useContext(CartContext)
 
-    const addProduct = () => addItemToCart(products)
+    const addProduct = () => addItemToCart(product)
     return (
         <div className="product-card-container" key={id}>
             <img src={imageUrl} alt="product"/>

@@ -8,7 +8,7 @@ import { CartContext } from "../../context/CartContext";
 import { CartIcon } from "../cart-icon/CartIcon";
 import { CartDropDown } from "../cart-dropdown/CartDropDown";
 
-import "./navigation.style.scss";
+import {NavigationContainer, LinkContainer, NavItemContainer, NavItems} from "./navigation.style.jsx";
 
 export const Navigation = () => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ export const Navigation = () => {
 
   return (
     <>
-      <nav className="navigation-container">
+      {/* <div className="navigation-container">
         <div className="nav-logo">
           <Link className="logi" to="/">
             <Crown />
@@ -34,7 +34,23 @@ export const Navigation = () => {
           <li className="nav-items"><CartIcon/></li>
         </ul>
         {isCartOpen && <CartDropDown/>}
-      </nav>
+      </div> */}
+      <NavigationContainer>
+          <LinkContainer  to="/">
+            <Crown />
+          </LinkContainer>
+          <NavItemContainer>
+          <NavItems to="/shop">
+            Shop
+          </NavItems>
+          <NavItems to="/contact">
+            Contact
+          </NavItems>
+          {currentUser ? <NavItems as ='span' to="/signout">SignOut</NavItems> : <NavItems to="/signin">SignIn</NavItems>}
+          <NavItems><CartIcon/></NavItems>
+        </NavItemContainer>
+        {isCartOpen && <CartDropDown/>}
+      </NavigationContainer>
     </>
   );
 };
